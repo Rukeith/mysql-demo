@@ -1,0 +1,36 @@
+version: "3.6"
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    image: demo_mysql:ci-label
+    container_name: demo-mysql-ci-label
+    labels:
+      - "CI-TEST=ci-label"
+    networks:
+      - ci-network
+    ports:
+      - "3306:3306"
+
+  license:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: demo_license:ci-label
+    container_name: demo-license-ci-label
+    labels:
+      - "CI-TEST=ci-label"
+    networks:
+      - ci-network
+    ports:
+      - "9502:9502"
+    depends_on:
+      - mysql
+    privileged: true
+
+networks:
+  ci-network:
+    labels:
+      - "CI-TEST=ci-label"
+    name: ci-network

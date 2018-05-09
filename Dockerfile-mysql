@@ -1,0 +1,5 @@
+FROM mysql:5.7.17
+LABEL CI-TEST="ci-label"
+ENV MYSQL_ROOT_PASSWORD=biz \
+    MYSQL_ROOT_HOST=%
+COPY 001.sql docker-entrypoint-initdb.d/001.sql
