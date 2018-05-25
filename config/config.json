@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "bizcloud",
+    "username": "mysql",
     "password": "bizcloud",
     "database": "license",
-    "host": "docker.for.mac.host.internal",
+    "host": "demo-mysql-ci-label",
     "dialect": "mysql"
   },
   "test": {
